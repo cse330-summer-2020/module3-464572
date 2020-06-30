@@ -57,13 +57,14 @@
         // Check if the current user has liked the current story
         $current_user = $_SESSION['username'];
         $query_string = "SELECT story_pk from likes_stories WHERE (username='$current_user' AND story_pk=$story_pk)";
-        $likes_comments_data = get_data($query_string);
+        $likes_story_data = get_data($query_string);
         print_r($comments_data);
 
         $story_already_liked = false;
-        if (count($likes_comments_data) === 1){
+        if (count($likes_story_data) === 1){
             $story_already_liked = true;
         }
+
 
         /* Displaying Data */
         // Story Display
@@ -104,10 +105,11 @@
         printf("<ul>\n");
         foreach ($comments_data as $entry){
             $update_buttons="";
+            $comment_pk_tmp = $entry['comments_pk'];
             if ($entry['username'] === (string)$_SESSION['username']){
                 $username_tmp = $entry['username'];
                 $body_tmp = $entry['body'];
-                $comment_pk_tmp = $entry['comments_pk'];
+                
                 $update_buttons = 
                 "<form action=\"edit-comment.php\" method=\"POST\">\n
                     <input type=\"hidden\" value=\"$username_tmp\" name=\"author\">\n
@@ -128,6 +130,33 @@
                 <div>Likes: %u</div>\n
                 <div class=\"comment-buttons-wrapper\">%s</div>", $entry['username'], $entry['body'], $entry['likes'], $update_buttons);
             
+            $query_string = "SELECT comments_pk from likes_comments WHERE (username='$current_user' AND comments_pk=$comment_pk_tmp)";
+            $likes_comments_data = get_data($query_string);
+            print_r($likes_comments_data);
+    
+            $comment_already_liked = false;
+            if (count($likes_comments_data) === 1){
+                $comment_already_liked = true;
+            }
+
+            if ($comment_already_liked){
+                printf("
+                <form action='unlike-comment.php' method='POST'>
+                    <input type='submit' value='Unlike'>
+                    <input type='hidden' value='$comment_pk_tmp' name='comments_pk'>
+                    <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                </form>\n
+                ");
+            }else{
+                printf("
+                <form action='like-comment.php' method='POST'>
+                    <input type='submit' value='Like'>
+                    <input type='hidden' value='$comment_pk_tmp' name='comments_pk'>
+                    <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                </form>\n
+                ");
+            }
+
             printf("</li>\n");
         }
         printf("</ul>\n");
