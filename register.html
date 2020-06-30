@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E News: Register</title>
+</head>
+<body>
+    <form action="register-validation.php" method="POST">
+        <p>Enter the username and password you would like. Alphanumeric only.</p>
+        <label for="username_input">Username:</label>
+        <input type="text" name="raw_username" id="username_input" pattern="[a-zA-Z0-9]+" required><br>
+
+        <label for="password_input">Password:</label>
+        <input type="text" name="raw_password" id="password_input" pattern="[a-zA-Z0-9]+" required><br>
+
+        <input type="submit" value="Register" name="clicked_register">
+    </form>
+</body>
+</html>
