@@ -5,7 +5,7 @@
 
     $table = "comments";
     $comments_pk = (int)$_POST['comments_pk'];
-    
+    $story_pk = (int)$_POST['story_pk'];
 
 
     // update database. Needs to first delete all likes associated with that comment.
@@ -29,6 +29,8 @@
         exit;
     }
 
+
+
     $query_string="DELETE from $table WHERE (comments_pk=?)";
     $mysqli = connect();
     $stmt = $mysqli->prepare($query_string);
@@ -41,7 +43,7 @@
 
     if ($stmt->execute()){
         printf("Successful deletion");
-        header('Location: main.php');
+        header("Location: view-comments.php?story_pk=$story_pk");
         $stmt->close();
     }else{
         printf("Failed deletion");

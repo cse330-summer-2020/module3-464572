@@ -12,6 +12,7 @@
 
     $comment_pk = $_POST['comments_pk'];
     $username = $_SESSION['username'];
+    $story_pk = $_POST['story_pk'];
 
     // Table Insertion
     $table_name = "likes_comments";
@@ -33,6 +34,7 @@
         print_r($new_likes);
         if(!$stmt){
             printf("Query Prep Failed: %s\n", $mysqli->error);
+            printf("bruh;");
             exit;
         }
 
@@ -44,8 +46,8 @@
             printf("Total likes failed.");
         }
 
-        $stmt->close();
-        header('Location: main.php');
+        $stmt->close(); 
+        header("Location: view-comments.php?story_pk=$story_pk");
         exit;
     }else{
         printf("Failed Comment Like");

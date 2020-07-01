@@ -74,7 +74,7 @@
                 <div class='story-wrapper'>\n
                     <h3><a href=\"%s\">%s</a></h3>\n
                     <div class='story-sub-header'>\n
-                        <div>%s</div>\n
+                        <div>By: %s</div>\n
                         <div>Likes: %u</div>\n
                         <form action='unlike-story.php' method='POST'>
                             <input type='submit' value='Unlike'>
@@ -130,12 +130,14 @@
                         <input type=\"hidden\" value=\"$username_tmp\" name=\"author\">\n
                         <input type=\"hidden\" value=\"$comment_pk_tmp\" name=\"comments_pk\">\n
                         <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                        <input type='hidden' value='$story_pk' name='story_pk'>
                         <input type=\"submit\" value=\"Edit\">\n
                     </form>\n
                     <form action=\"delete-comment.php\" method=\"POST\">\n
                         <input type=\"hidden\" value=\"$username_tmp\" name=\"author\">\n
                         <input type=\"hidden\" value=\"$comment_pk_tmp\" name=\"comments_pk\">\n
                         <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                        <input type='hidden' value='$story_pk' name='story_pk'>
                         <input type=\"submit\" value=\"Delete\">\n
                     </form>\n";
                 }
@@ -160,6 +162,7 @@
                         <input type='submit' value='Unlike'>
                         <input type='hidden' value='$comment_pk_tmp' name='comments_pk'>
                         <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                        <input type='hidden' value='$story_pk' name='story_pk'>
                     </form>\n
                     ");
                 }else{
@@ -168,6 +171,7 @@
                         <input type='submit' value='Like'>
                         <input type='hidden' value='$comment_pk_tmp' name='comments_pk'>
                         <input type=\"hidden\" name=\"token\" value=\"$token\" />\n
+                        <input type='hidden' value='$story_pk' name='story_pk'>
                     </form>\n
                     ");
                 }

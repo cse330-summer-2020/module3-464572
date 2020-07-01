@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E News: Edit Story</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/edit-story.css">
 </head>
 <body>
     <!-- 
@@ -13,9 +15,20 @@
      - CSRF Token Check
      - POST form
     -->
+    <header class='container-fluid'>
+        <h2><a href='main.php' class='home-link'>E News</a></h2>
+        <form action="../logout.php" class='logout-block'>
+            <p>
+                <a href="your-likes.php?username=<?php session_start(); echo $_SESSION['username']; ?>">
+                    <?php echo $_SESSION['username'];?>
+                </a>
+            </p>
+            <input type="submit" value="Logout">
+        </form>
+    </header>
+    <main>
     <h3>Current Version</h3>
     <?php
-        session_start();
         require("../database.php");
         $story_pk = (int)$_POST['story_pk'];
         
@@ -62,7 +75,7 @@
                 <textarea id=\"new-title-input\" name=\"new-title\" maxlength=\"300\" rows=\"4\" cols=\"50\">$title</textarea><br>\n 
                 
                 <label for=\"new-link-input\">Link:</label>\n
-                <input link=\"new-link-input\" type=\"text\" name=\"new-link\" maxlength=\"1000\" value=\"$link\">\n
+                <input id=\"new-link-input\" type=\"text\" name=\"new-link\" maxlength=\"1000\" value=\"$link\">\n
 
                 <input type=\"hidden\" name=\"story_pk\" value=\"$story_pk\" />
                 <input type=\"hidden\" name=\"token\" value=\"$token\" />
@@ -71,6 +84,8 @@
         )
         
     ?>
+    </main>
+    
     
 </body>
 </html>

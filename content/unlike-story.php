@@ -45,7 +45,7 @@
         }
 
         $stmt->close(); 
-        header('Location: main.php');
+        header("Location: view-comments.php?story_pk=$story_pk");
         exit;
     }else{
         printf("Failed Story unlike");

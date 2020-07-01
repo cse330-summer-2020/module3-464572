@@ -17,23 +17,31 @@
     $link = $_POST['new-link'];
     $author = $_SESSION['username'];
 
+    $query_string = "UPDATE stories SET title=?, link=? WHERE story_pk=?";
+    $bind_string = "ssi";
+    $data = array($title, $link, $story_pk);
 
-    $stmt = $mysqli->prepare("UPDATE stories SET title=?, link=? WHERE story_pk=?");
-    if(!$stmt){
-        printf("Query Prep Failed: %s\n", $mysqli->error);
-        exit;
+    require("shared.php");
+    if (edit_data($query_string, $bind_string, $data)){
+        header("Location: main.php");
     }
 
-    $stmt->bind_param('sss', $title, $link, $story_pk);
+    // $stmt = $mysqli->prepare("UPDATE stories SET title=?, link=? WHERE story_pk=?");
+    // if(!$stmt){
+    //     printf("Query Prep Failed: %s\n", $mysqli->error);
+    //     exit;
+    // }
 
-    if ($stmt->execute()){
-        printf("Edit uploaded successfully.");
-        header('Location: main.php');
-        $stmt->close();
-    }else{
-        printf("Edit failed.");
-        $stmt->close();
-    }
+    // $stmt->bind_param('sss', $title, $link, $story_pk);
+
+    // if ($stmt->execute()){
+    //     printf("Edit uploaded successfully.");
+    //     header('Location: main.php');
+    //     $stmt->close();
+    // }else{
+    //     printf("Edit failed.");
+    //     $stmt->close();
+    // }
 
     
     

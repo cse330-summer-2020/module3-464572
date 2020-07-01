@@ -60,6 +60,7 @@
                     <div class=\"story-title\">%s</div>\n
                     <div class=\"user\">%s</div>\n
                     <a href=\"view-comments.php?story_pk=$story_pk_tmp\" class=\"comment-link\">Comments</a>\n
+                    <hr>\n
                 </li>\n";
 
                 // If the current user matches $username_tmp, also print edit and delete buttons

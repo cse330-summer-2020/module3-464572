@@ -70,6 +70,79 @@
 
         return $all_data;
     }
+
+
+    // Refactoring
+    // I would like to make GET, EDIT, INSERT, and DELETE each have their own functions
+    function edit_data($query_string, $bind_string, $data, $msg=''){
+        $mysqli = connect();
+    
+        $stmt = $mysqli->prepare($query_string);
+        if(!$stmt){
+            printf("Query Prep Failed: %s\n", $mysqli->error);
+            exit;
+        }
+    
+        // Using the splat operator to pass a variable number of parameters
+        $stmt->bind_param($bind_string, ...$data);
+    
+        $successful_execution = $stmt->execute();
+        $stmt->close();  
+
+        if ($successful_execution){
+            printf("Successful Edit: $msg");
+            return true;
+        }else{
+            printf("Failed Edit: $msg");
+            return false;
+        }
+    }
+
+    function delete_data($query_string, $bind_string, $data, $msg=''){
+        $mysqli = connect();
+        $stmt = $mysqli->prepare($query_string);
+        if(!$stmt){
+            printf("Query Prep Failed: %s\n", $mysqli->error);
+            exit;
+        }
+        
+        $stmt->bind_param($bind_string, ...$data);
+        
+        $successful_execution = $stmt->execute();
+        $stmt->close();  
+
+        if ($successful_execution){
+            printf("Successful Deletion: $msg");
+            return true;
+        }else{
+            printf("Failed Deletion: $msg");
+            return false;
+        }
+         
+    }
+
+    function insert_data($query_string, $bind_string, $data, $msg=''){
+        $mysqli = connect();
+        $stmt = $mysqli->prepare($query_string);
+        if(!$stmt){
+            printf("Query Prep Failed: %s\n", $mysqli->error);
+            exit;
+        }
+        
+        $stmt->bind_param($bind_string, ...$data);
+        
+        $successful_execution = $stmt->execute();
+        $stmt->close();  
+
+        if ($successful_execution){
+            printf("Successful Insertion: $msg");
+            return true;
+        }else{
+            printf("Failed Insertion: $msg");
+            return false;
+        }
+         
+    }
     
 
 ?>
