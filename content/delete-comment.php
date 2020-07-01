@@ -30,7 +30,7 @@
     }
 
 
-
+    // Deletion of the comments themselves
     $query_string="DELETE from $table WHERE (comments_pk=?)";
     $mysqli = connect();
     $stmt = $mysqli->prepare($query_string);

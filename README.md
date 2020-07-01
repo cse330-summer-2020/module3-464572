@@ -5,6 +5,8 @@ Evan Han - 464572
 
 Possible Error: I had deleted the auto-generated repo by mistake, made a Piazza post. Unsure if that has any ramifications for grading.
 
+Additionally, I did not implement a way to check if a URL points to an actual living website.
+
 Creative Portion:
 I implemented a like system by creating two tables: likes_stories and likes_comments. Additionally, I added a column
 called 'likes' to my two original tables: stories and comments. A user can only like a story/post once because the PHP
