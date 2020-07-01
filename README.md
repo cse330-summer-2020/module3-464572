@@ -19,8 +19,8 @@ because it is being used as a foreign key elsewhere in comments and/or likes. I 
 Link: http://ec2-100-25-133-18.compute-1.amazonaws.com/~evanhan6561/module3/login.html
 
 Some Pre-made Users:
- - test1
- - password
+ - Username: test1
+ - Password: password
 
- - test2
- - password2
+ - Username: test2
+ - Password: password2
