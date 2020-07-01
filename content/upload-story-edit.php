@@ -28,10 +28,13 @@
 
     if ($stmt->execute()){
         printf("Edit uploaded successfully.");
+        header('Location: main.php');
+        $stmt->close();
     }else{
         printf("Edit failed.");
+        $stmt->close();
     }
 
-    $stmt->close();
-
+    
+    
 ?>

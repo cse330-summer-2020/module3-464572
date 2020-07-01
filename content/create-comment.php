@@ -21,11 +21,14 @@
     $execute_success = $stmt->execute();
     if ($execute_success){
         printf("Successful Comment insertion.");
+        $stmt->close();
+        header('Location: main.php');
         exit;
     }else{
         printf("Failed Comment insertion");
+        $stmt->close();
         exit;
     }
 
-    $stmt->close();
+    
 ?>

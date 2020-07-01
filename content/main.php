@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E News</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-    <header>
-        <h1>E News</h1>
-        <form action="../logout.php">
+    <header class='container-fluid'>
+        <h2><a href='main.php' class='home-link'>E News</a></h2>
+        <form action="../logout.php" class='logout-block'>
+            <p>
+                <a href="your-likes.php?username=<?php session_start(); echo $_SESSION['username']; ?>">
+                    <?php echo $_SESSION['username'];?>
+                </a>
+            </p>
             <input type="submit" value="Logout">
         </form>
     </header>
@@ -22,10 +29,11 @@
             <label for="story_link">Link to Article:</label>
             <input type="text" name="link" id="story_link" maxlength="1000" required><br>
 
-            <input type="hidden" name="token" value="<?php session_start(); echo $_SESSION['token'];?>">
+            <input type="hidden" name="token" value="<?php echo $_SESSION['token'];?>">
 
             <input type="submit" value="Post Story">
         </form>
+        <hr>
 
         <!-- PHP to retrieve ALL stories and list them. -->
         <?php
@@ -74,6 +82,7 @@
                                 <input type=\"submit\" value=\"Delete\">\n
                             </form>\n
                         </div>\n
+                        <hr>\n
                     </li>\n";
                 }
 
@@ -82,9 +91,10 @@
                     "<a href=\"" . htmlspecialchars($link_tmp) ."\">" . htmlspecialchars($title_tmp) . "</a>",
                     htmlspecialchars($username_tmp)
                 );
+                
             }
             echo "</ul>\n";
-
+            
             $stmt->close();
         ?>
     </main>

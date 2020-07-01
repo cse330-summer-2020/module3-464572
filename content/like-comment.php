@@ -45,15 +45,15 @@
         }
 
         $stmt->close();
+        header('Location: main.php');
         exit;
     }else{
         printf("Failed Comment Like");
+        $stmt->close();
         exit;
     }
 
-    $stmt->close();
-
-
-
+    
+    
 
 ?>

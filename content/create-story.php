@@ -27,12 +27,13 @@
     $execute_success = $stmt->execute();
     if ($execute_success){
         printf("Successful Story insertion.");
+        $stmt->close();
+        header('Location: main.php');
         exit;
     }else{
         printf("Failed Story insertion");
+        $stmt->close();
         exit;
-    }
-
-    $stmt->close();
-
+    }    
+    
 ?>

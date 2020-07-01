@@ -45,12 +45,14 @@
         }
 
         $stmt->close(); 
+        header('Location: main.php');
         exit;
     }else{
         printf("Failed Story unlike");
+        $stmt->close();
         exit;
     }
 
-    $stmt->close();
+    
     
 ?>

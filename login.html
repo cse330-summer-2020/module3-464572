@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>E News Login</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/login.css">
 </head>
 <body>
-    <!-- Username and Password -->
-    <form action="login-validation.php" method="POST">
-        <label for="username_input">Username:</label>
-        <input type="text" name="raw_username" id="username_input" pattern="[a-zA-Z0-9]+" maxlength="25" required><br>
+    <header class="container-fluid">
+        <h2>E News</h2>
+    </header>
+    <main>
+        <!-- Username and Password -->
+        <form action="login-validation.php" method="POST" class='login-form'>
+            <label for="username_input">Username:</label><br>
+            <input type="text" name="raw_username" id="username_input" pattern="[a-zA-Z0-9]+" maxlength="25" required><br>
+    
+            <label for="password_input">Password:</label><br>
+            <input type="text" name="raw_password" id="password_input" pattern="[a-zA-Z0-9]+" required><br>
+    
+            <input type="submit" value="Login" class='login-button'>
+        </form>
+        <div>
+            New User? <a href="register.html">Register Here!</a>
+        </div>
 
-        <label for="password_input">Password:</label>
-        <input type="text" name="raw_password" id="password_input" pattern="[a-zA-Z0-9]+" required><br>
-
-        <input type="submit" value="Login">
-    </form>
-    <div>
-        New User? <a href="register.html">Register Here!</a>
-    </div>
+    </main>
+    
+    
 
 </body>
 </html>

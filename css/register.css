@@ -1,0 +1,30 @@
+body{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #006c67;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 75px;
+    border-bottom: 1px solid beige;
+    background-color: #f9f9f9;
+    color: #32292f;
+}
+
+.home-link:hover, .home-link:visited, .home-link{
+    color:#32292f;
+}
+
+main{
+    min-width: 960px;
+    margin: 1em;
+    background-color: #f9f9f9;
+    padding: 2em;
+    border-radius: 1em;
+    color: #32292f;
+}
+
