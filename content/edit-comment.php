@@ -24,6 +24,7 @@
         require('shared.php');
         token_check();
 
+        $author = $_POST['author'];
         if ($_SESSION['username'] !== $_POST['author']){
             die("Session username does not match this comment's author. Exiting.");
         }
@@ -42,7 +43,7 @@
                 <textarea id=\"new-comment-input\" name=\"new-body\" maxlength=\"300\" rows=\"4\" cols=\"50\">$body</textarea><br>\n 
 
                 <input type=\"hidden\" value=\"$story_pk\" name=\"story_pk\">\n
-
+                <input type=\"hidden\" value=\"$author\" name=\"author\">\n
                 <input type=\"hidden\" name=\"comments_pk\" value=\"$comments_pk\" />
                 <input type=\"hidden\" name=\"token\" value=\"$token\" />
                 <input type=\"submit\" value=\"Submit Changes\">\n
